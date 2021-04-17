@@ -1,6 +1,5 @@
 <?php 
     function db_query($sql) {
-        /* Переменные для соединения с базой данных */ 
         $hostname = "localhost:8889"; 
         $username = "root"; 
         $password = "root"; 
@@ -8,27 +7,23 @@
         
         $result = [];
 
-        /* Подключение к серверу MySQL */ 
-        $link = mysqli_connect($hostname, $username, $password, $dbName);
-
-        if (!$link) { 
-            echo "Ошибка подключения к базе данных. Код ошибки: " . mysqli_connect_error(); 
+        $connection = mysqli_connect($hostname, $username, $password, $dbName);
+        if (!$connection) { 
+            echo "Ошибка подключения к базе данных. Код ошибки: <br>" . mysqli_connect_error(); 
             exit; 
         } 
 
-        /* Посылаем запрос серверу */ 
-        if ($ans = mysqli_query($link, $sql)) { 
-
+        if ($ans = mysqli_query($connection, $sql)) { 
             while($row = mysqli_fetch_assoc($ans)){ 
                 array_push($result, $row);
             } 
-
-            /* Освобождаем используемую память */ 
             mysqli_free_result($ans); 
-        } 
+        }
+        else {
+            echo "Ошибка: " . $sql . "<br>" . mysqli_error($connection);
+        }
 
-        /* Закрываем соединение */ 
-        mysqli_close($link);
+        mysqli_close($connection);
 
         return $result;
     }

@@ -1,0 +1,105 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+:root {
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page {
+    font-family: 'Roboto', sans-serif;
+    color: #000;
+    font-size: 14px;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.page__container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+@media screen and (max-width: 1200px) {
+    .page__container {
+        padding: 0 15px;
+        width: 100%;
+    }
+}
+
+.main-page {
+}
+.content {
+    padding: 100px 0;
+}
+.page__container {
+}
+.main-page__container {
+    display: flex;
+}
+.main-page__item {
+    padding: 0 15px;
+}
+.db-item {
+    flex: 0 0 50%
+}
+.db-item__header {
+    display: flex;
+    justify-content: space-between;
+}
+.db-item__title {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 40px;
+    font-weight: bold;
+}
+.button {
+    border: none;
+    background: #333;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 18px;
+    line-height: 40px;
+}
+.button_theme_round {
+    padding: 0;
+    width: 40px;
+    border-radius: 50%;
+}
+.db-item__search {
+}
+.db-item__subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.table__row {
+    
+}
+.table__cell {
+    border: 1px solid #333;
+    padding: 10px;
+}
+.table__cell_head {
+    vertical-align: middle;
+}
+.input {
+
+}
+.input_entry {
+    border: 0;
+    background: none;
+    width: 100%;
+}
+.db-item__result {
+}
