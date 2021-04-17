@@ -2,13 +2,18 @@
 <?php include 'php/render.php' ?>
 
 <?php 
+    // Данные о колонках (ID для инпута, заголовок)
     $kaf_columns = [];
     $prep_columns = [];
+
+    // Запросы в соответсвующие БД
     $kaf_sql = "SELECT * FROM `Кафедры`";
     $prep_sql = "SELECT * FROM `Преподаватели`";
 
+    // Тут будет храниться ID для текущего поля при инициализации
     $cur_id = 0;
 
+    // Достаеём столбцы таблицы Кафедры из БД
     $ans = db_query("SHOW COLUMNS FROM `Кафедры`");
     foreach ($ans as $row){ 
         $val = [
@@ -19,6 +24,7 @@
         $cur_id++;
     } 
 
+    // Достаеём столбцы таблицы Преподаватели из БД
     $ans = db_query("SHOW COLUMNS FROM `Преподаватели`");
     foreach ($ans as $row){ 
         $val = [
@@ -29,8 +35,8 @@
         $cur_id++;
     }  
 
+    // Если есть GET параметры, дополняем запрос
     $is_search = false;
-
     foreach ($kaf_columns as $column) {
         if (isset($_GET[$column["input_name"]]) && $_GET[$column["input_name"]] != "") {
             $str = "locate('" . $_GET[$column["input_name"]] . "', `" . $column["title"] . "`)";
@@ -56,9 +62,7 @@
         }
     }
 
-?>
-
-<?php 
+    // Производим запросы
     $kaf_rows = db_query($kaf_sql);
     $prep_rows = db_query($prep_sql);
 ?>
