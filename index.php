@@ -3,6 +3,51 @@
 <?php include 'php/get_colums.php' ?>
 
 <?php 
+    // Добавляем запись из POST запроса если нужно
+    if (isset($_POST["table"])) {
+
+        // Данные для запроса
+        $table = $_POST["table"];
+
+        $columns = ($table == "Кафедры" ? $kaf_columns : $prep_columns);
+        $values = [];
+
+        // Ищем названия для полей
+        foreach ($_POST as $key => $value) {
+            $res = NULL;
+            foreach ($columns as $item) {
+                if ($item["input_name"] == $key) {
+                    $res = $item["title"];
+                    break;
+                }
+            }
+            if ($res) {
+                $val = [
+                    "column" => $res,
+                    "value" => $value,
+                ];
+                array_push($values, $val);
+            }
+        }
+
+        // Формируем запрос
+        $to_sql_columns = "";
+        $to_sql_values = "";
+        foreach ($values as $cur) {
+            if ($to_sql_columns != "") {
+                $to_sql_columns .= ", ";
+            }
+            if ($to_sql_values != "") {
+                $to_sql_values .= ", ";
+            }
+            $to_sql_columns .= "`" . $cur["column"] . "`";
+            $to_sql_values .= "'" . $cur["value"] . "'";
+        }
+        $add_sql = "INSERT INTO `$table` (" . $to_sql_columns . ") VALUES (" . $to_sql_values . ")";
+
+        db_query($add_sql);
+    }
+
     // Запросы в соответсвующие БД
     $kaf_sql = "SELECT * FROM `Кафедры`";
     $prep_sql = "SELECT * FROM `Преподаватели`";
@@ -13,11 +58,11 @@
         if (isset($_GET[$column["input_name"]]) && $_GET[$column["input_name"]] != "") {
             $str = "locate('" . $_GET[$column["input_name"]] . "', `" . $column["title"] . "`)";
             if ($is_search) {
-                $kaf_sql = $kaf_sql . " and " . $str;
+                $kaf_sql .= " and " . $str;
             }
             else {
                 $is_search = true;
-                $kaf_sql = $kaf_sql . " WHERE " . $str;
+                $kaf_sql .= " WHERE " . $str;
             }
         }
     }
@@ -25,11 +70,11 @@
         if (isset($_GET[$column["input_name"]]) && $_GET[$column["input_name"]] != "") {
             $str = "locate('" . $_GET[$column["input_name"]] . "', `" . $column["title"] . "`)";
             if ($is_search) {
-                $prep_sql = $kaf_sql . " and " . $str;
+                $prep_sql .= " and " . $str;
             }
             else {
                 $is_search = true;
-                $prep_sql = $kaf_sql . " WHERE " . $str;
+                $prep_sql .= " WHERE " . $str;
             }
         }
     }

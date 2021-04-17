@@ -79,5 +79,5 @@ function validateForm(form) {
         }
     }
 
-    return false;
+    return true;
 }
