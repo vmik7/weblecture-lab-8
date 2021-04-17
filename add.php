@@ -1,12 +1,7 @@
 <?php include 'php/db.php' ?>
+
 <?php 
-    // $ans = db_query("SELECT * FROM `Кафедры`");
-
-    // echo "Кафедры: <br>"; 
-
-    // foreach ($ans as $row){ 
-    //     echo $row['Название'] . "<br>"; 
-    // } 
+    
 ?>
 
 
