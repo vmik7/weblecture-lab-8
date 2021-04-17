@@ -1,39 +1,11 @@
 <?php include 'php/db.php' ?>
 <?php include 'php/render.php' ?>
+<?php include 'php/get_colums.php' ?>
 
 <?php 
-    // Данные о колонках (ID для инпута, заголовок)
-    $kaf_columns = [];
-    $prep_columns = [];
-
     // Запросы в соответсвующие БД
     $kaf_sql = "SELECT * FROM `Кафедры`";
     $prep_sql = "SELECT * FROM `Преподаватели`";
-
-    // Тут будет храниться ID для текущего поля при инициализации
-    $cur_id = 0;
-
-    // Достаеём столбцы таблицы Кафедры из БД
-    $ans = db_query("SHOW COLUMNS FROM `Кафедры`");
-    foreach ($ans as $row){ 
-        $val = [
-            "input_name" => "field" . $cur_id,
-            "title" => $row["Field"]
-        ];
-        array_push($kaf_columns, $val);
-        $cur_id++;
-    } 
-
-    // Достаеём столбцы таблицы Преподаватели из БД
-    $ans = db_query("SHOW COLUMNS FROM `Преподаватели`");
-    foreach ($ans as $row){ 
-        $val = [
-            "input_name" => "field" . $cur_id,
-            "title" => $row["Field"]
-        ];
-        array_push($prep_columns, $val);
-        $cur_id++;
-    }  
 
     // Если есть GET параметры, дополняем запрос
     $is_search = false;
