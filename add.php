@@ -44,18 +44,18 @@
                 <?php 
                     if ($table == "Кафедры") {
                         echo '
-                            <input type="text" name="' . $columns[0]["input_name"] . '" class="input" placeholder="' . $columns[0]["title"] . '" required>
-                            <input type="text" name="' . $columns[1]["input_name"] . '" class="input input_validate_char" placeholder="' . $columns[1]["title"] . '" required>
-                            <input type="text" name="' . $columns[2]["input_name"] . '" class="input" placeholder="' . $columns[2]["title"] . '" required>
-                            <input type="number" name="' . $columns[3]["input_name"] . '" class="input input_validate_posnum" placeholder="' . $columns[3]["title"] . '" required>
+                            <input type="text" name="' . $columns[0]["input_name"] . '" class="input add-page__input" placeholder="' . $columns[0]["title"] . '" required>
+                            <input type="text" name="' . $columns[1]["input_name"] . '" class="input add-page__input input_validate_char" placeholder="' . $columns[1]["title"] . '" required>
+                            <input type="text" name="' . $columns[2]["input_name"] . '" class="input add-page__input" placeholder="' . $columns[2]["title"] . '" required>
+                            <input type="number" name="' . $columns[3]["input_name"] . '" class="input add-page__input input_validate_posnum" placeholder="' . $columns[3]["title"] . '" required>
                         ';
                     }
                     else {
                         echo '
-                            <input type="text" name="' . $columns[0]["input_name"] . '" class="input" placeholder="' . $columns[0]["title"] . '" required>
-                            <select name="' . $columns[1]["input_name"] . '" required>' . $options_html . '</select>
-                            <input type="text" name="' . $columns[2]["input_name"] . '" class="input" placeholder="' . $columns[2]["title"] . '" required>
-                            <input type="text" name="' . $columns[3]["input_name"] . '" class="input input_validate_tel" placeholder="' . $columns[3]["title"] . '" required>
+                            <input type="text" name="' . $columns[0]["input_name"] . '" class="input add-page__input" placeholder="' . $columns[0]["title"] . '" required>
+                            <select name="' . $columns[1]["input_name"] . '" class="add-page__input" required>' . $options_html . '</select>
+                            <input type="text" name="' . $columns[2]["input_name"] . '" class="input add-page__input" placeholder="' . $columns[2]["title"] . '" required>
+                            <input type="text" name="' . $columns[3]["input_name"] . '" class="input add-page__input input_validate_tel" placeholder="' . $columns[3]["title"] . '" required>
                         ';
                     }
                 ?>

@@ -103,10 +103,32 @@
 .input {
 
 }
+.add-page__input {
+    display: block;
+    max-width: 100%;
+    width: 500px;
+
+    margin: 10px 0;
+
+    padding: 0 10px;
+    font-size: 16px;
+    line-height: 24px;
+}
 .input_entry {
     border: 0;
     background: none;
     width: 100%;
 }
 .db-item__result {
+}
+
+.add-page {
+}
+.add-page__container {
+}
+.add-page__title {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 40px;
+    font-weight: bold;
 }
